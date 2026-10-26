@@ -1,0 +1,17 @@
+{
+  "name": "neweast-arabia",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Neweast Arabia holding website, CMS dashboard, and NestJS API",
+  "scripts": {
+    "dev": "concurrently -n api,web,cms -c red,blue,green \"npm run dev:api\" \"npm run dev:web\" \"npm run dev:cms\"",
+    "dev:api": "npm run start:dev --prefix backend",
+    "dev:web": "npm run dev --prefix website -- -p 3020",
+    "dev:cms": "npm run dev --prefix dashboard",
+    "db:setup": "npm run prisma:generate --prefix backend && npm run prisma:migrate --prefix backend -- --name init && npm run prisma:seed --prefix backend",
+    "build": "npm run build --prefix backend && npm run build --prefix website && npm run build --prefix dashboard"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

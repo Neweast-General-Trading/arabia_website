@@ -1,0 +1,139 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Setting {
+  id        String   @id @default("main")
+  data      Json
+  updatedAt DateTime @updatedAt
+}
+
+model Media {
+  id        String   @id @default(cuid())
+  filename  String
+  original  String
+  mimeType  String
+  size      Int
+  url       String
+  alt       Json?
+  createdAt DateTime @default(now())
+}
+
+model Banner {
+  id        String   @id @default(cuid())
+  image     String?
+  title     Json
+  subtitle  Json
+  ctaLabel  Json?
+  ctaLink   String?
+  sortOrder Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Pillar {
+  id        String   @id @default(cuid())
+  icon      String?
+  image     String?
+  title     Json
+  body      Json
+  sortOrder Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Leader {
+  id        String   @id @default(cuid())
+  image     String?
+  name      Json
+  title     Json
+  bio       Json
+  sortOrder Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Subsidiary {
+  id          String   @id @default(cuid())
+  logo        String?
+  image       String?
+  name        Json
+  tagline     Json
+  description Json
+  websiteUrl  String
+  sortOrder   Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model StoryMilestone {
+  id        String   @id @default(cuid())
+  year      String
+  image     String?
+  title     Json
+  body      Json
+  sortOrder Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model GovernanceItem {
+  id        String   @id @default(cuid())
+  title     Json
+  body      Json
+  sortOrder Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ValueItem {
+  id        String   @id @default(cuid())
+  icon      String?
+  title     Json
+  body      Json
+  sortOrder Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PageSeo {
+  slug        String @id
+  title       Json
+  description Json
+  keywords    Json?
+  ogImage     String?
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  locale    String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

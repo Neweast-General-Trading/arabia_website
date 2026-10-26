@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand: #e30613;
+  --color-navy: #0b1220;
+  --color-navy-2: #151d2e;
+  --color-sand: #f6f3ee;
+  --color-line: #e8e4dc;
+  --color-muted: #667085;
+}
+
+html, body, #root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  background: #f6f3ee;
+  color: #0b1220;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
